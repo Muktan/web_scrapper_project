@@ -1,13 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+{#    <!-- Latest compiled and minified CSS -->#}
+{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">#}
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <meta charset="UTF-8">
     <title>Title</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'home/style.css' %}">
+    {% load static %}
+    <script type="text/javascript" src="{% static 'home/script.js' %}"></script>
+
 </head>
 <body>
-    <h3>hello django.....!!!</h3>
-    <h4>{{ abc }}</h4>
+    <nav id="navbar">
+        <ul>
+            <li><a href="#section1" class="smoothscroll" onclick="abc()">Section 1</a></li>
+            <li><a href="#section2" class="smoothscroll">Section 2</a></li>
+            <li><a href="#section3" class="smoothscroll">Section 3</a></li>
+            <li><a href="#section4" class="smoothscroll">Section 4</a></li>
+            <li><a href="#section5" class="smoothscroll">Section 5</a></li>
+            <li><a href="#section6" class="smoothscroll">Section 6</a></li>
+        </ul>
+    </nav>
+    <section id="section1">
+        <h2>Section One</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero facere in quod, eligendi velit quidem ullam fuga, quas aut praesentium quae esse obcaecati veritatis porro adipisci, amet! Debitis et perspiciatis itaque neque doloremque ea molestiae in rem. Distinctio tempore velit inventore unde, expedita deleniti quia labore! Sequi obcaecati laboriosam tenetur ab, mollitia reiciendis itaque, libero esse inventore sed, laborum sapiente blanditiis dignissimos quis voluptatum recusandae dolore. Ipsam molestiae enim doloribus, explicabo aspernatur, vel repudiandae ut eveniet dolore illum ipsa ullam eaque eius minima hic totam dicta quidem eligendi sunt accusantium! Voluptatum culpa, sint natus repellat!</p>
+    <p><small>Code by <strong><a href="https://goo.gl/e2etJd" target="_blank">@SebaGarcia</a></strong></small></p>
+    </section>
+
+    <section id="section2">
+        <h2>Section Two</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero facere in quod, eligendi velit quidem ullam fuga, quas aut praesentium quae esse obcaecati veritatis porro adipisci, amet! Debitis et perspiciatis itaque neque doloremque ea molestiae in rem. Distinctio tempore velit inventore unde, expedita deleniti quia labore! Sequi obcaecati laboriosam tenetur ab, mollitia reiciendis itaque, libero esse inventore sed, laborum sapiente blanditiis dignissimos quis voluptatum recusandae dolore. Ipsam molestiae enim doloribus, explicabo aspernatur, vel repudiandae ut eveniet dolore illum ipsa ullam eaque eius minima hic totam dicta quidem eligendi sunt accusantium! Voluptatum culpa, sint natus repellat!</p>
+    <p><small>Code by <strong><a href="https://goo.gl/e2etJd" target="_blank">@SebaGarcia</a></strong></small></p>
+    </section>
+
+    <section id="section3">
+        <h2>Section Three</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero facere in quod, eligendi velit quidem ullam fuga, quas aut praesentium quae esse obcaecati veritatis porro adipisci, amet! Debitis et perspiciatis itaque neque doloremque ea molestiae in rem. Distinctio tempore velit inventore unde, expedita deleniti quia labore! Sequi obcaecati laboriosam tenetur ab, mollitia reiciendis itaque, libero esse inventore sed, laborum sapiente blanditiis dignissimos quis voluptatum recusandae dolore. Ipsam molestiae enim doloribus, explicabo aspernatur, vel repudiandae ut eveniet dolore illum ipsa ullam eaque eius minima hic totam dicta quidem eligendi sunt accusantium! Voluptatum culpa, sint natus repellat!</p>
+    <p><small>Code by <strong><a href="https://goo.gl/e2etJd" target="_blank">@SebaGarcia</a></strong></small></p>
+    </section>
+    <section id="section4">
+        <h2>Section Four</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero facere in quod, eligendi velit quidem ullam fuga, quas aut praesentium quae esse obcaecati veritatis porro adipisci, amet! Debitis et perspiciatis itaque neque doloremque ea molestiae in rem. Distinctio tempore velit inventore unde, expedita deleniti quia labore! Sequi obcaecati laboriosam tenetur ab, mollitia reiciendis itaque, libero esse inventore sed, laborum sapiente blanditiis dignissimos quis voluptatum recusandae dolore. Ipsam molestiae enim doloribus, explicabo aspernatur, vel repudiandae ut eveniet dolore illum ipsa ullam eaque eius minima hic totam dicta quidem eligendi sunt accusantium! Voluptatum culpa, sint natus repellat!</p>
+    <p><small>Code by <strong><a href="https://goo.gl/e2etJd" target="_blank">@SebaGarcia</a></strong></small></p>
+    </section>
+
+    <section id="section5">
+        <h2>Section Five</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero facere in quod, eligendi velit quidem ullam fuga, quas aut praesentium quae esse obcaecati veritatis porro adipisci, amet! Debitis et perspiciatis itaque neque doloremque ea molestiae in rem. Distinctio tempore velit inventore unde, expedita deleniti quia labore! Sequi obcaecati laboriosam tenetur ab, mollitia reiciendis itaque, libero esse inventore sed, laborum sapiente blanditiis dignissimos quis voluptatum recusandae dolore. Ipsam molestiae enim doloribus, explicabo aspernatur, vel repudiandae ut eveniet dolore illum ipsa ullam eaque eius minima hic totam dicta quidem eligendi sunt accusantium! Voluptatum culpa, sint natus repellat!</p>
+    <p><small>Code by <strong><a href="https://goo.gl/e2etJd" target="_blank">@SebaGarcia</a></strong></small></p>
+    </section>
+    <section id="section6">
+        <h2>Section Six</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero facere in quod, eligendi velit quidem ullam fuga, quas aut praesentium quae esse obcaecati veritatis porro adipisci, amet! Debitis et perspiciatis itaque neque doloremque ea molestiae in rem. Distinctio tempore velit inventore unde, expedita deleniti quia labore! Sequi obcaecati laboriosam tenetur ab, mollitia reiciendis itaque, libero esse inventore sed, laborum sapiente blanditiis dignissimos quis voluptatum recusandae dolore. Ipsam molestiae enim doloribus, explicabo aspernatur, vel repudiandae ut eveniet dolore illum ipsa ullam eaque eius minima hic totam dicta quidem eligendi sunt accusantium! Voluptatum culpa, sint natus repellat!</p>
+    <p><small>Code by <strong><a href="https://goo.gl/e2etJd" target="_blank">@SebaGarcia</a></strong></small></p>
+    </section>
 </body>
 </html>

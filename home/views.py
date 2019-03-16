@@ -5,6 +5,6 @@ from django.template.context_processors import csrf
 
 # Create your views here.
 def index(request):
-    context = {'abc': "heyyy"}
+    context = {}
     context.update(csrf(request))
     return render_to_response('index.html', context)
