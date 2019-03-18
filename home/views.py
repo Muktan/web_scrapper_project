@@ -8,3 +8,5 @@ def index(request):
     context = {}
     context.update(csrf(request))
     return render_to_response('index.html', context)
+
+
