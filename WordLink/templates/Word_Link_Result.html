@@ -1,14 +1,223 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Word Link</title>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title> Basic example </title>
+        {% load static %}
+    <link rel="stylesheet" href="{% static "WordLink/Treant.css" %}">
+        {% load static %}
+    <link rel="stylesheet" href="{% static "WordLink/basic-example.css" %}">
+    <style>
+        body,html{
+                    /* Full height */
+          height: 100%;
+
+          /* Center and scale the image nicely */
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+
+    </style>
 </head>
-<body>
+{% load static %}
+<body background="{% static "WordLink/network_wallpaper.jpg" %}">
+    <div class="chart" id="basic-example"></div>
+    {% load static %}
+    <script src="{% static "WordLink/raphael.js" %}"></script>
+    {% load static %}
+    <script src="{% static "WordLink/Treant.js" %}"></script>
 
-    {% for links in results %}
-        <div>{{ links }}</div>
-    {% endfor %}
+    <script>
+        var config = {
+            container: "#basic-example",
 
+            connectors: {
+                type: 'step'
+            },
+            node: {
+                HTMLclass: 'nodeExample1'
+            }
+        },
+        w_search = {
+
+
+
+
+            innerHTML: `
+                    <a href="{{ zeroth }}">{{ zeroth_heading }}</a>
+
+            `,
+
+        },
+
+        l1_c1 = {
+
+           parent: w_search,
+           stackChildren: true,
+
+           innerHTML: `
+                        <a href="{{ first }}">{{ first_heading}}</a>
+
+            `,
+
+
+
+        },
+        l1_c2 = {
+           stackChildren:true,
+           parent: w_search,
+
+
+           innerHTML: `
+                    <a href="{{ second }}">{{ second_heading}}</a>
+
+            `,
+
+
+        },
+        l1_c3 = {
+           stackChildren:true,
+
+           parent: w_search,
+
+
+           innerHTML: `
+                    <a href="{{ third }}">{{ third_heading}}</a>
+
+            `,
+
+
+        },
+        l1_c4 = {
+           stackChildren:true,
+
+           parent: w_search,
+
+
+           innerHTML: `
+                    <a href="{{ fourth }}">{{ fourth_heading}}</a>
+
+            `,
+
+
+        },
+        l1_c5 = {
+           stackChildren:true,
+           parent: w_search,
+
+
+           innerHTML: `
+                    <a href="{{ fifth }}">{{ fifth_heading}}</a>
+
+            `,
+
+
+        },
+        l2_c1={
+            parent:l1_c1,
+            innerHTML:`
+            <div class="innercontent" style="margin-left:17px;"">
+                <br>
+                <ul>
+                    {% for head in list_link_1 %}
+
+                        <li><a href="https://en.wikipedia.org/wiki/{{ head }}">{{ head }}</a></li><br>
+                    {% endfor %}
+                </ul>
+            </div>
+            `,
+        },
+        l2_c2={
+            parent:l1_c2,
+            innerHTML:`
+            <div class="innercontent" style="margin-left:17px;">
+            <br>
+                <ul>
+                    {% for head in list_link_2 %}
+
+                        <li><a href="https://en.wikipedia.org/wiki/{{ head }}">{{ head }}</a></li><br>
+                    {% endfor %}
+
+                </ul>
+                </div>
+            `,
+        },
+        l2_c3={
+            parent:l1_c3,
+            innerHTML:`
+            <div class="innercontent" style="margin-left:17px;">
+            <br>
+                <ul>
+                    {% for head in list_link_3 %}
+
+                        <li><a href="https://en.wikipedia.org/wiki/{{ head }}">{{ head }}</a></li><br>
+                    {% endfor %}
+
+                </ul>
+                </div>
+            `,
+        },
+        l2_c4={
+            parent:l1_c4,
+            innerHTML:`
+            <div class="innercontent" style="margin-left:17px;">
+            <br>
+                <ul>
+                    {% for head in list_link_4 %}
+
+                        <li><a href="https://en.wikipedia.org/wiki/{{ head }}">{{ head }}</a></li><br>
+                    {% endfor %}
+                </ul>
+                </div>
+            `,
+        },
+        l2_c5={
+            parent:l1_c5,
+            innerHTML:`
+            <div class="innercontent" style="margin-left:17px;">
+            <br>
+                <ul>
+                    {% for head in list_link_5 %}
+
+                        <li><a href="https://en.wikipedia.org/wiki/{{ head }}">{{ head }}</a></li><br>
+                    {% endfor %}
+                </ul>
+            </div>
+            `,
+        }
+
+
+
+
+
+
+
+
+
+        chart_config = [
+            config,
+            w_search,
+            l1_c1,
+            l1_c2,
+            l1_c3,
+            l1_c4,
+            l1_c5,
+            l2_c1,
+            l2_c2,
+            l2_c3,
+            l2_c4,
+            l2_c5
+
+        ];
+
+
+
+    </script>
+    <script>
+        new Treant( chart_config );
+    </script>
 </body>
 </html>
