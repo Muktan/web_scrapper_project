@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Emails</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+        <div class="row">
+        	<form action="Emails_Result.html" method="post">
+                {% csrf_token %}
+				<div class="input-group input-group-lg ">
+				  <div class="input-group-prepend">
+				    <span class="input-group-text" id="inputGroup-sizing-lg">URL</span>
+				  </div>
+				  <input type="text" name="url" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Enter url to find Emails" size="60">
+				</div>
+				<br>
+				<input type="submit" value="Emails">
+			</form>
+
+        </div>
+    </div>
+
+</body>
+</html>
