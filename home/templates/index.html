@@ -3,7 +3,7 @@
 <head>
 {#    <!-- Latest compiled and minified CSS -->#}
 {#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">#}
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -11,55 +11,168 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <meta charset="UTF-8">
     <title>Title</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'home/style.css' %}">
+{#    {% load static %}#}
+{#    <link rel="stylesheet" type="text/css" href="{% static 'home/style.css' %}">#}
     {% load static %}
     <script type="text/javascript" src="{% static 'home/script.js' %}"></script>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+body{font:normal normal 300 1.5em/1.2 Lato;background:#efefef;text-rendering:optimizeLegibility;color:#fff;padding:0;margin:0;}
+h1{font-weight:300;}
+h2{font-weight:700;font-size:1.8em;text-transform:uppercase;}
+nav{font-size:.85em;width:100%;height:70px;background: #7a2921;text-align:center;line-height:70px;font-weight:300;position:fixed;top:0;z-index:10;}
+nav.opaque{background-color:#444;}
+nav>ul{margin:0;padding:0;list-style:none;}
+nav>ul>li{display:inline;}
+nav a{color:#f1f1f1;text-decoration:none;padding:5px 10px;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;-webkit-transition:all .3s ease;-o-transition:all .3s ease;transition:all .3s ease;}
+{#nav li:hover{border-bottom:3px solid rgba(255,255,255,0.8);}#}
+nav>ul>li:nth-child(1n+2):before{content:'|';width:1px;margin:0 10px;opacity:0.25;}
+section{height:800px;padding-top:270px;padding-bottom:270px;padding-left:50px;padding-right:50px;display:block;overflow:hidden;text-align:center;text-shadow:1px 1px 1px #333;background:#FF7F50;background-size:100%;background-repeat:no-repeat;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+small{text-shadow:none;font-size: 14px;}
+small li{color:#fff;text-decoration: none;}
+#section1{
+    background-image: url({% static "home/idea_baloon.png"%});
+    /* Full height */
+      height: 100%;
 
+      /* Center and scale the image nicely */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+
+}
+#section2{
+    background: #c5bb17;
+
+}
+#section3{background:#2D2C41;}
+#section4{background: #cd4944;}
+{##section5{background:#39C0BA;}#}
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 25px;width: 150px;height: 60px;
+}
+.top{
+    position: fixed;
+    top:0px;
+    left: 0px;
+}
+    </style>
 </head>
 <body>
-    <nav id="navbar">
-        <ul>
-            <li><a href="#section1" class="smoothscroll" onclick="abc()">Section 1</a></li>
-            <li><a href="#section2" class="smoothscroll">Section 2</a></li>
-            <li><a href="#section3" class="smoothscroll">Section 3</a></li>
-            <li><a href="#section4" class="smoothscroll">Section 4</a></li>
-            <li><a href="#section5" class="smoothscroll">Section 5</a></li>
-            <li><a href="#section6" class="smoothscroll">Section 6</a></li>
+    <nav class="top navbar navbar-expand-lg justify-content-between">
+{#        <span><a href="{% static "http://127.0.0.1:8000/home/index.html" %}"><img src="{% static "home/logo.png" %}" height="50px" width="50px" style="float: left;padding-top: 12px;padding-left: 12px;"></a>#}
+
+        <a class="navbar-brand" href=""><img src="{% static "home/logo.png" %}" style="width: 50px;height: 50px;"></a>
+
+        <ul class="navbar-nav">
+
+            <li><a href="#section1" class="smoothscroll">About Us</a></li>
+            <li><a href="#section2" class="smoothscroll">Basic Scrapping</a></li>
+            <li><a href="#section3" class="smoothscroll">Email Gathering</a></li>
+            <li><a href="#section4" class="smoothscroll">Word Link</a></li>
+{#            <li><a href="#section5" class="smoothscroll">Section 5</a></li>#}
+{#            <li><a href="#section6" class="smoothscroll">Section 6</a></li>#}
         </ul>
+        {% if logged == True %}
+        <div>
+            <input class="btn btn-outline-warning" type="button" name="login" value="{{ username }}" onclick="profile()">
+            <script>
+                function profile() {
+                    alert("you clicked to view profile");
+                }
+            </script>
+
+        </div>
+        {% else %}
+        <div>
+            <input class="btn btn-outline-warning" type="button" name="log-in" value="log-in" onclick="login()">
+            <script>
+                function login() {
+                    window.location.href="login.html";
+                }
+            </script>
+            <input class="btn btn-outline-warning" type="button" name="sign-up" value="sign-up" onclick="signup()">
+            <script>
+                function signup() {
+                    window.location.href="signup.html";
+                }
+            </script>
+        </div>
+        {% endif %}
+
+
+
     </nav>
+    {% load static %}
     <section id="section1">
-        <h2>Section One</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero facere in quod, eligendi velit quidem ullam fuga, quas aut praesentium quae esse obcaecati veritatis porro adipisci, amet! Debitis et perspiciatis itaque neque doloremque ea molestiae in rem. Distinctio tempore velit inventore unde, expedita deleniti quia labore! Sequi obcaecati laboriosam tenetur ab, mollitia reiciendis itaque, libero esse inventore sed, laborum sapiente blanditiis dignissimos quis voluptatum recusandae dolore. Ipsam molestiae enim doloribus, explicabo aspernatur, vel repudiandae ut eveniet dolore illum ipsa ullam eaque eius minima hic totam dicta quidem eligendi sunt accusantium! Voluptatum culpa, sint natus repellat!</p>
-    <p><small>Code by <strong><a href="https://goo.gl/e2etJd" target="_blank">@SebaGarcia</a></strong></small></p>
+        <div style="text-align: left;width: 50%;float: left;">
+            <h2>Web Scraper</h2>
+            <p>Web scraper will automatically load and extract data from<br> multiple pages of websites based on your requirement.</p>
+            <p>You choose the functionality and explicitly give url rest is our job.</p>
+            <p><strong>Happy Scrappy Day...!!!</strong></p>
+        </div>
+        <div style="text-align: left;width: 40%;float: right;">
+            <h2>What we provide:-</h2>
+
+
+            <p>&nbsp;&nbsp;1. Basic Scraping</p>
+            <p>&nbsp;&nbsp;2. Email Gathering</p>
+            <p>&nbsp;&nbsp;3. Word Link</p>
+
+        </div>
     </section>
 
     <section id="section2">
-        <h2>Section Two</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero facere in quod, eligendi velit quidem ullam fuga, quas aut praesentium quae esse obcaecati veritatis porro adipisci, amet! Debitis et perspiciatis itaque neque doloremque ea molestiae in rem. Distinctio tempore velit inventore unde, expedita deleniti quia labore! Sequi obcaecati laboriosam tenetur ab, mollitia reiciendis itaque, libero esse inventore sed, laborum sapiente blanditiis dignissimos quis voluptatum recusandae dolore. Ipsam molestiae enim doloribus, explicabo aspernatur, vel repudiandae ut eveniet dolore illum ipsa ullam eaque eius minima hic totam dicta quidem eligendi sunt accusantium! Voluptatum culpa, sint natus repellat!</p>
-    <p><small>Code by <strong><a href="https://goo.gl/e2etJd" target="_blank">@SebaGarcia</a></strong></small></p>
+        <h2>Basic Scrapping</h2>
+        <p>Description</p>
+        <input class="button" type="button" name="basicscrapping" value="Try it" onclick="s2()">
     </section>
-
+    <script>
+        function s2() {
+            window.location.href = "http://127.0.0.1:8000";
+        }
+    </script>
     <section id="section3">
-        <h2>Section Three</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero facere in quod, eligendi velit quidem ullam fuga, quas aut praesentium quae esse obcaecati veritatis porro adipisci, amet! Debitis et perspiciatis itaque neque doloremque ea molestiae in rem. Distinctio tempore velit inventore unde, expedita deleniti quia labore! Sequi obcaecati laboriosam tenetur ab, mollitia reiciendis itaque, libero esse inventore sed, laborum sapiente blanditiis dignissimos quis voluptatum recusandae dolore. Ipsam molestiae enim doloribus, explicabo aspernatur, vel repudiandae ut eveniet dolore illum ipsa ullam eaque eius minima hic totam dicta quidem eligendi sunt accusantium! Voluptatum culpa, sint natus repellat!</p>
-    <p><small>Code by <strong><a href="https://goo.gl/e2etJd" target="_blank">@SebaGarcia</a></strong></small></p>
-    </section>
-    <section id="section4">
-        <h2>Section Four</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero facere in quod, eligendi velit quidem ullam fuga, quas aut praesentium quae esse obcaecati veritatis porro adipisci, amet! Debitis et perspiciatis itaque neque doloremque ea molestiae in rem. Distinctio tempore velit inventore unde, expedita deleniti quia labore! Sequi obcaecati laboriosam tenetur ab, mollitia reiciendis itaque, libero esse inventore sed, laborum sapiente blanditiis dignissimos quis voluptatum recusandae dolore. Ipsam molestiae enim doloribus, explicabo aspernatur, vel repudiandae ut eveniet dolore illum ipsa ullam eaque eius minima hic totam dicta quidem eligendi sunt accusantium! Voluptatum culpa, sint natus repellat!</p>
-    <p><small>Code by <strong><a href="https://goo.gl/e2etJd" target="_blank">@SebaGarcia</a></strong></small></p>
-    </section>
+        <h2>Email gathering</h2>
+        <p>Description</p>
+        <input class="button" type="button" name="emailgathering" value="Try it" onclick="s3()">
 
-    <section id="section5">
-        <h2>Section Five</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero facere in quod, eligendi velit quidem ullam fuga, quas aut praesentium quae esse obcaecati veritatis porro adipisci, amet! Debitis et perspiciatis itaque neque doloremque ea molestiae in rem. Distinctio tempore velit inventore unde, expedita deleniti quia labore! Sequi obcaecati laboriosam tenetur ab, mollitia reiciendis itaque, libero esse inventore sed, laborum sapiente blanditiis dignissimos quis voluptatum recusandae dolore. Ipsam molestiae enim doloribus, explicabo aspernatur, vel repudiandae ut eveniet dolore illum ipsa ullam eaque eius minima hic totam dicta quidem eligendi sunt accusantium! Voluptatum culpa, sint natus repellat!</p>
-    <p><small>Code by <strong><a href="https://goo.gl/e2etJd" target="_blank">@SebaGarcia</a></strong></small></p>
     </section>
-    <section id="section6">
-        <h2>Section Six</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero facere in quod, eligendi velit quidem ullam fuga, quas aut praesentium quae esse obcaecati veritatis porro adipisci, amet! Debitis et perspiciatis itaque neque doloremque ea molestiae in rem. Distinctio tempore velit inventore unde, expedita deleniti quia labore! Sequi obcaecati laboriosam tenetur ab, mollitia reiciendis itaque, libero esse inventore sed, laborum sapiente blanditiis dignissimos quis voluptatum recusandae dolore. Ipsam molestiae enim doloribus, explicabo aspernatur, vel repudiandae ut eveniet dolore illum ipsa ullam eaque eius minima hic totam dicta quidem eligendi sunt accusantium! Voluptatum culpa, sint natus repellat!</p>
-    <p><small>Code by <strong><a href="https://goo.gl/e2etJd" target="_blank">@SebaGarcia</a></strong></small></p>
+    <script>
+        function s3() {
+            window.location.href = "http://127.0.0.1:8000/Emails/Emails.html";
+        }
+    </script>
+    <section id="section4">
+        <h2>WordLink</h2>
+        <p>Word link fetches all the related topic related to specified Keyword.<br>It represents the links related to entered word in tree format. This tool can be used to find dependencies of the given topic.</p>
+        <p>Example: If you enter "Geometry" it will fetch you all the related topics of it.</p>
+        <input class="button" type="button" name="wordlink" value="Try it" onclick="abc()">
     </section>
+    <script>
+        function abc() {
+            window.location.href = "http://127.0.0.1:8000/WordLink/Word_Link.html";
+        }
+    </script>
+{#    <section id="section5">#}
+{#        <h2>Section Five</h2>#}
+{#        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero facere in quod, eligendi velit quidem ullam fuga, quas aut praesentium quae esse obcaecati veritatis porro adipisci, amet! Debitis et perspiciatis itaque neque doloremque ea molestiae in rem. Distinctio tempore velit inventore unde, expedita deleniti quia labore! Sequi obcaecati laboriosam tenetur ab, mollitia reiciendis itaque, libero esse inventore sed, laborum sapiente blanditiis dignissimos quis voluptatum recusandae dolore. Ipsam molestiae enim doloribus, explicabo aspernatur, vel repudiandae ut eveniet dolore illum ipsa ullam eaque eius minima hic totam dicta quidem eligendi sunt accusantium! Voluptatum culpa, sint natus repellat!</p>#}
+{#    <p><small>Code by <strong><a href="https://goo.gl/e2etJd" target="_blank">@SebaGarcia</a></strong></small></p>#}
+{#    </section>#}
+{#    <section id="section6">#}
+{#        <h2>Section Six</h2>#}
+{#        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero facere in quod, eligendi velit quidem ullam fuga, quas aut praesentium quae esse obcaecati veritatis porro adipisci, amet! Debitis et perspiciatis itaque neque doloremque ea molestiae in rem. Distinctio tempore velit inventore unde, expedita deleniti quia labore! Sequi obcaecati laboriosam tenetur ab, mollitia reiciendis itaque, libero esse inventore sed, laborum sapiente blanditiis dignissimos quis voluptatum recusandae dolore. Ipsam molestiae enim doloribus, explicabo aspernatur, vel repudiandae ut eveniet dolore illum ipsa ullam eaque eius minima hic totam dicta quidem eligendi sunt accusantium! Voluptatum culpa, sint natus repellat!</p>#}
+{#    <p><small>Code by <strong><a href="https://goo.gl/e2etJd" target="_blank">@SebaGarcia</a></strong></small></p>#}
+{#    </section>#}
 </body>
 </html>

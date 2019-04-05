@@ -13,8 +13,18 @@
 
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Lilita+One">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Dosis">
     <style>
+        h1{
+            font-family: 'Lilita One',Serif;
+        }
         body,html{
+
+        {% load static %}
+            background-image: url("{% static "WordLink/black.jpg" %}");
                     /* Full height */
           height: 100%;
 
@@ -22,14 +32,43 @@
           background-position: center;
           background-repeat: no-repeat;
           background-size: cover;
-        }
 
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+
+        }
+        .form-row{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        form{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin:10px;
+        }
     </style>
 </head>
 {% load static %}
-<body background="{% static "WordLink/network_wallpaper.jpg" %}">
+<body>
 	<div class="container">
-        <div class="row">
+        <div>
+            <h1 style="color: khaki;font-size: 55px">Word Link</h1>
+        </div>
+        <div class="row form-row">
+
+
         	<form action="Word_Link_Result.html" method="post">
                 {% csrf_token %}
 				<div class="input-group input-group-lg ">
@@ -38,9 +77,22 @@
 				  </div>
 				  <input type="text" name="Keyword" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Enter keyword to find related links" size="60">
 				</div>
-				<br>
-				<input type="submit" name="Fetch" value="Fetch">
+                <br>
+				<div style="padding: 15px">
+                    <input class="btn btn-outline-light btn-lg " type="submit" name="Fetch" value="Fetch">
+                </div>
+
 			</form>
+            <div class="guidelines" style="color: white">
+                <p class="font-weight-bold">Guidelines to search:-</p>
+                <ul>
+                    <li class="font-italic">Use "_"(undescore) instead of " "(blank space)</li>
+                </ul>
+                <ul>
+                    <li class="font-italic">Don't search polysemy words(multiple meaning word)</li>
+                </ul>
+
+            </div>
 
         </div>
     </div>

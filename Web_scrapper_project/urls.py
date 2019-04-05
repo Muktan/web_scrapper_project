@@ -22,5 +22,5 @@ urlpatterns = [
     path('home/', include('home.urls')),
     path('WordLink/', include('WordLink.urls')),
     path('Emails/', include('Emails.urls')),
-    path('demo/',include('demo.urls')),
+
 ]

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Lilita+One">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Dosis">
+</head>
+<body>
+    {% if already_exist %}
+    <div style="width: 100%;text-align: center;"><h1 style="font-family: Dosis,Serif;color: darkorange;"><b>You are already registered<b></b></h1>
+        <style>
+            html{
+                {% load static %}
+                background-image: url("{% static "home/oops.jpg" %}");
+                            /* Full height */
+                  height: 100%;
+
+                  /* Center and scale the image nicely */
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  background-size: cover;
+
+
+            }
+        </style>
+        <p style="font-family: Dosis,Serif">To Go Back to home click <a href="index.html">here</a></p>
+        </div>
+    {% else %}
+    <div style="width: 100%;text-align: center">
+        <h1 style="font-family: Dosis,Serif;color: khaki">You got registered Successfully...!!!!</h1>
+        <style>
+            html{
+                {% load static %}
+                background-image: url("{% static "home/tick.jpg" %}");
+                            /* Full height */
+                  height: 100%;
+
+                  /* Center and scale the image nicely */
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  background-size: cover;
+
+
+            }
+        </style>
+        <p style="font-family: Dosis,Serif;color: khaki;" >To Go Back to home click <a style="color: darkorange" href="index.html">here</a></p>
+    </div>
+    {% endif %}
+
+</body>
+</html>

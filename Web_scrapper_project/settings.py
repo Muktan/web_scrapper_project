@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'home',
     'WordLink',
     'Emails',
-    'demo',
 ]
 
 MIDDLEWARE = [

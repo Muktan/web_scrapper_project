@@ -79,7 +79,7 @@ def Emails_Result(request):
     wl.user_id=11
     wl.save()
 
-    context={"results": res_arr}
+    context={"results": res_arr,"url_searched":url_searched}
     context.update(csrf(request))
     return render_to_response('Emails_Result.html', context)
 

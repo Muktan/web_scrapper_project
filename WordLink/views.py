@@ -106,7 +106,7 @@ def Word_Link_Result(request):
     wl=word_link()
     wl.result = str(dict_url_linkurl)
     wl.word_searched=word_searched
-    wl.user_id=13
+    wl.user_id=111
     wl.save()
 
     zeroth=urls_searched[0]

@@ -12,8 +12,12 @@ nav>ul>li:nth-child(1n+2):before{content:'|';width:1px;margin:0 10px;opacity:0.2
 section{height:800px;padding:220px;display:block;overflow:hidden;text-align:center;text-shadow:1px 1px 1px #333;background:#FF7F50;background-size:100%;background-repeat:no-repeat;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
 small{text-shadow:none;font-size: 14px;}
 small a{color:#fff;text-decoration: none;}
-section:nth-child(2){background:#C12C42}
+section:nth-child(2){background: #28247a
+}
 section:nth-child(3){background:#6B8D7C}
 section:nth-child(4){background:#2D2C41}
 section:nth-child(5){background:#D8C19F}
 section:nth-child(6){background:#39C0BA}
+#section1{
+    background: chocolate;
+}

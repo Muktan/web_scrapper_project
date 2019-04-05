@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Lilita+One">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Dosis">
+</head>
+<body>
+    {% if correct_credentials %}
+        <h1>
+        <center style="color: darkorange;font-family: Dosis,Serif;">
+            <h3>
+                Welcome...!!!
+            </h3>
+            <h6>click <a href="index.html">here</a> to head to home page</h6>
+        </center>
+        </h1>
+        <style>
+            html{
+
+
+                {% load static %}
+                background-image: url("{% static "home/welcome.jpg" %}");
+                            /* Full height */
+                  height: 100%;
+
+                  /* Center and scale the image nicely */
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  background-size: cover;
+
+
+            }
+        </style>
+    {% else %}
+    <div style="float: right;font-size: 20px">
+
+
+
+            <h1 style="color: darkorange;font-family: 'Lilita One',Serif;">You entered wrong credentials</h1>
+            <h3 style="color: darkorange;font-family: 'Lilita One',Serif;">
+                click <a href="login.html">here</a> to login again<br>
+                click <a href="signup.html">here</a> to sign-up
+            </h3>
+
+
+
+
+    </div>
+
+        <style>
+            html{
+
+
+                {% load static %}
+                background-image: url("{% static "home/error.jpg" %}");
+                            /* Full height */
+                  height: 100%;
+
+                  /* Center and scale the image nicely */
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  background-size: cover;
+
+
+            }
+        </style>
+    {% endif %}
+</body>
+</html>

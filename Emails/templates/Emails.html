@@ -13,23 +13,79 @@
 
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Lilita+One">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Dosis">
+    <style>
+        h1{
+            font-family: 'Lilita One',Serif;
+        }
+        body,html{
+
+            {% load static %}
+            background-image: url("{% static 'Emails/network.jpg' %}");
+          /* Full height */
+          height: 100%;
+
+          /* Center and scale the image nicely */
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+
+        }
+        body{
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        form{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin:10px;
+        }
+    </style>
 </head>
 <body>
-	<div class="container">
-        <div class="row">
+
+    <div class="container">
+
+
+            <div style="text-align: center">
+                <h1 style="color: khaki;font-size: 55px">Email Gathering</h1>
+            </div>
+
         	<form action="Emails_Result.html" method="post">
                 {% csrf_token %}
 				<div class="input-group input-group-lg ">
 				  <div class="input-group-prepend">
 				    <span class="input-group-text" id="inputGroup-sizing-lg">URL</span>
 				  </div>
-				  <input type="text" name="url" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Enter url to find Emails" size="60">
+				  <input type="text" name="url" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Provide full URL" size="60">
 				</div>
-				<br>
-				<input type="submit" value="Emails">
-			</form>
+                <br>
+				<div style="padding: 15px">
+                    <input class="btn btn-outline-light btn-lg " type="submit" value="Emails">
+                </div>
 
-        </div>
+			</form>
+{#            <div class="guidelines" style="color: white">#}
+{#                <p class="font-weight-bold">Guidelines to search:-</p>#}
+{#                <ul>#}
+{#                    <li class="font-italic">Provide the full Url</li>#}
+{#                </ul>#}
+{#                <ul>#}
+{#                    <li class="font-italic">Don't </li>#}
+{#                </ul>#}
+{##}
+{#            </div>#}
+
+
     </div>
 
 </body>
