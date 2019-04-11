@@ -6,12 +6,36 @@ from bs4 import BeautifulSoup
 from .models import word_link
 # Create your views here.
 def Word_Link(request):
-    context = {}
-    context.update(csrf(request))
-    return render_to_response('Word_Link.html', context)
+    try:
+        if request.GET['q']=='':
+            print("OK this is the error")
+            request.COOKIES['username'] = request.GET['q']
+            if request.COOKIES['username']:
+                logged=True
+            else:
+                logged=False
+            context = {'username':request.GET['q'],"logged":logged}
+
+            context.update(csrf(request))
+
+            return render_to_response('Word_Link.html', context)
+    except:
+        context = {"error":"Direct Access Denied"}
+        context.update(csrf(request))
+        return render_to_response('error.html', context)
+    # else:
+    #     context = {}
+    #
+    #     context.update(csrf(request))
+    #     return render_to_response('error.html', context)
 def Word_Link_Result(request):
     # get the request parameter i.e. keyword entered
-    word_searched = request.POST['Keyword']
+    try:
+        word_searched = request.POST['Keyword']
+    except:
+            context = {"error": "Direct Access Denied"}
+            context.update(csrf(request))
+            return render_to_response('error.html', context)
     # word_searched = "Binary_number"
     # initial wikipedia url
     wiki_url = "https://en.wikipedia.org/wiki/"
@@ -101,12 +125,18 @@ def Word_Link_Result(request):
     #print(dict_url_linkurl)
 
 
-
+    if request.COOKIES['username']:
+        logged=True
+    else:
+        logged=False
     #now we can store the dictionary to the database
     wl=word_link()
+    if logged:
+        wl.username=request.COOKIES['username']
+
     wl.result = str(dict_url_linkurl)
     wl.word_searched=word_searched
-    wl.user_id=111
+
     wl.save()
 
     zeroth=urls_searched[0]
@@ -120,6 +150,6 @@ def Word_Link_Result(request):
     context={"zeroth":zeroth,"first":first,"second":second,"third":third,"fourth":fourth,"fifth":fifth,
              "zeroth_heading":urls_heading[0],"first_heading":urls_heading[1],"second_heading":urls_heading[2],"third_heading":urls_heading[3],
              "fourth_heading":urls_heading[4],"fifth_heading":urls_heading[5],"list_link_1":dict_url_linkurl[urls_searched[1]][:5],"list_link_2":dict_url_linkurl[urls_searched[2]][:5],
-             "list_link_3":dict_url_linkurl[urls_searched[3]][:5],"list_link_4":dict_url_linkurl[urls_searched[4]][:5],"list_link_5":dict_url_linkurl[urls_searched[5]][:5]}
+             "list_link_3":dict_url_linkurl[urls_searched[3]][:5],"list_link_4":dict_url_linkurl[urls_searched[4]][:5],"list_link_5":dict_url_linkurl[urls_searched[5]][:5],"username":request.COOKIES['username'],"logged":logged}
     context.update(csrf(request))
     return render_to_response('Word_Link_Result.html', context)

@@ -18,6 +18,7 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Dosis">
     <style>
+        @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
         h1{
             font-family: 'Lilita One',Serif;
         }
@@ -49,43 +50,96 @@
             flex-wrap: wrap;
             margin:10px;
         }
+        nav{font-size:1.05em;width:100%;height:70px;background: #a1352c;text-align:center;line-height:70px;font-family:'Lato',Serif;font-weight:800;position:fixed;top:0;z-index:10;}
+nav.opaque{background-color:#444;}
+nav>ul{margin:0;padding:0;list-style:none;}
+nav>ul>li{display:inline;}
+nav a{color:#f1f1f1;text-decoration:none;padding:5px 10px;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;-webkit-transition:all .3s ease;-o-transition:all .3s ease;transition:all .3s ease;}
+{#nav li:hover{border-bottom:3px solid rgba(255,255,255,0.8);}#}
+nav>ul>li:nth-child(1n+2):before{content:'|';width:1px;margin:0 10px;opacity:0.25;}
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <script>
+        document.cookie="username={{ username }}"
+    </script>
+
+    <div class="container-fluid" style="height: 100%;padding: 0px" >
+        <nav class="row top navbar navbar-expand-lg justify-content-between" style="margin: 0px">
+{#        <span><a href="{% static "http://127.0.0.1:8000/home/index.html" %}"><img src="{% static "home/logo.png" %}" height="50px" width="50px" style="float: left;padding-top: 12px;padding-left: 12px;"></a>#}
+
+        <a class="navbar-brand" href="http://127.0.0.1:8000/home/index.html"><img src="{% static "home/logo.png" %}" style="width: 50px;height: 50px;"></a>
+
+        <ul class="navbar-nav">
+
+            <li><a href="http://127.0.0.1:8000/home/index.html#section1" class="smoothscroll">About Us</a></li>
+            <li><a href="http://127.0.0.1:8000/home/index.html#section2" class="smoothscroll">Basic Scrapping</a></li>
+            <li><a href="http://127.0.0.1:8000/home/index.html#section3" class="smoothscroll">Email Gathering</a></li>
+            <li><a href="http://127.0.0.1:8000/home/index.html#section4" class="smoothscroll">Word Link</a></li>
+{#            <li><a href="#section5" class="smoothscroll">Section 5</a></li>#}
+{#            <li><a href="#section6" class="smoothscroll">Section 6</a></li>#}
+        </ul>
+        {% if logged%}
+        <div>
+            <input class="btn btn-outline-warning" type="button" name="login" value="{{ username }}" onclick="profile()">
+            <input type="hidden" name="username" value={{ username }}>
+            <script>
+                function profile() {
+                    document.cookie="username={{ username }}"
+                    window.location.href="http://127.0.0.1:8000/home/profile.html";
+
+                }
+            </script>
+
+        </div>
+        {% else %}
+        <div>
+            <input class="btn btn-outline-warning" type="button" name="log-in" value="log-in" onclick="login()">
+            <script>
+                function login() {
+                    window.location.href="http://127.0.0.1:8000/home/login.html";
+                }
+            </script>
+            <input class="btn btn-outline-warning" type="button" name="sign-up" value="sign-up" onclick="signup()">
+            <script>
+                function signup() {
+                    window.location.href="http://127.0.0.1:8000/home/signup.html";
+                }
+            </script>
+        </div>
+
+        {% endif %}
 
 
-            <div style="text-align: center">
-                <h1 style="color: khaki;font-size: 55px">Email Gathering</h1>
+
+    </nav>
+
+            <div style="text-align: center;margin-top: 180px;">
+                <h1 style="color: gold;font-size: 55px">Email Gathering </h1>
             </div>
 
-        	<form action="Emails_Result.html" method="post">
+        	<form class="container" action="Emails_Result.html" method="post">
                 {% csrf_token %}
+                <input type="hidden" name="username" value="{{ username }}">
 				<div class="input-group input-group-lg ">
 				  <div class="input-group-prepend">
 				    <span class="input-group-text" id="inputGroup-sizing-lg">URL</span>
 				  </div>
-				  <input type="text" name="url" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Provide full URL" size="60">
+				  <input type="text" name="url" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Provide full URL" size="60" style="width:30%;">
 				</div>
                 <br>
 				<div style="padding: 15px">
-                    <input class="btn btn-outline-light btn-lg " type="submit" value="Emails">
+                    <input class="btn btn-outline-warning btn-lg " type="submit" value="Fetch Emails">
+{#                    <input class="btn btn-outline-light btn-lg " type="button" value="Home" onclick="rethome()">#}
+{#                    <script>#}
+{#                        function rethome(){#}
+{#                            window.location.href="http://127.0.0.1:8000/home/index.html"#}
+{#                        }#}
+{#                    </script>#}
                 </div>
 
 			</form>
-{#            <div class="guidelines" style="color: white">#}
-{#                <p class="font-weight-bold">Guidelines to search:-</p>#}
-{#                <ul>#}
-{#                    <li class="font-italic">Provide the full Url</li>#}
-{#                </ul>#}
-{#                <ul>#}
-{#                    <li class="font-italic">Don't </li>#}
-{#                </ul>#}
-{##}
-{#            </div>#}
-
-
     </div>
 
 </body>

@@ -20,15 +20,23 @@
     <meta charset="UTF-8">
     <title>Emails</title>
     <style>
+        nav{font-size:1.05em;width:100%;height:70px;background: #a1352c;text-align:center;line-height:70px;font-weight:300;position:fixed;top:0;z-index:10;}
+nav.opaque{background-color:#444;}
+nav>ul{margin:0;padding:0;list-style:none;}
+nav>ul>li{display:inline;}
+nav a{color:#f1f1f1;text-decoration:none;padding:5px 10px;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;-webkit-transition:all .3s ease;-o-transition:all .3s ease;transition:all .3s ease;}
+{#nav li:hover{border-bottom:3px solid rgba(255,255,255,0.8);}#}
+nav>ul>li:nth-child(1n+2):before{content:'|';width:1px;margin:0 10px;opacity:0.25;}
         html{
             font-family: Dosis,Serif;
             {% load static %}
             background-image: url("{% static "Emails/network.jpg" %}");
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            {#display: flex;#}
+            {#align-items: center;#}
+            {#justify-content: center;#}
             /* Full height */
           height: 100%;
+
 
           /* Center and scale the image nicely */
           background-position: center;
@@ -42,11 +50,9 @@
         }
         body{
             background: transparent;
-            color: khaki;
+            color: gold;
             font-size: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+
         }
         .container{
 
@@ -64,11 +70,60 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="row">
+    <div class="container-fluid" style="padding: 0px">
+        <nav class="top navbar navbar-expand-lg justify-content-between">
+{#        <span><a href="{% static "http://127.0.0.1:8000/home/index.html" %}"><img src="{% static "home/logo.png" %}" height="50px" width="50px" style="float: left;padding-top: 12px;padding-left: 12px;"></a>#}
+
+        <a class="navbar-brand" href="http://127.0.0.1:8000/home/index.html"><img src="{% static "home/logo.png" %}" style="width: 50px;height: 50px;"></a>
+
+        <ul class="navbar-nav">
+
+            <li><a href="http://127.0.0.1:8000/home/index.html#section1" class="smoothscroll">About Us</a></li>
+            <li><a href="http://127.0.0.1:8000/home/index.html#section2" class="smoothscroll">Basic Scrapping</a></li>
+            <li><a href="http://127.0.0.1:8000/home/index.html#section3" class="smoothscroll">Email Gathering</a></li>
+            <li><a href="http://127.0.0.1:8000/home/index.html#section4" class="smoothscroll">Word Link</a></li>
+{#            <li><a href="#section5" class="smoothscroll">Section 5</a></li>#}
+{#            <li><a href="#section6" class="smoothscroll">Section 6</a></li>#}
+        </ul>
+        {% if logged%}
+        <div>
+            <input class="btn btn-outline-warning" type="button" name="login" value="{{ username }}" onclick="profile()">
+            <input type="hidden" name="username" value={{ username }}>
+            <script>
+                function profile() {
+                    document.cookie="username={{ username }}"
+                    window.location.href="http://127.0.0.1:8000/home/profile.html";
+
+                }
+            </script>
+
+        </div>
+        {% else %}
+        <div>
+            <input class="btn btn-outline-warning" type="button" name="log-in" value="log-in" onclick="login()">
+            <script>
+                function login() {
+                    window.location.href="login.html";
+                }
+            </script>
+            <input class="btn btn-outline-warning" type="button" name="sign-up" value="sign-up" onclick="signup()">
+            <script>
+                function signup() {
+                    window.location.href="signup.html";
+                }
+            </script>
+        </div>
+
+        {% endif %}
+
+
+
+    </nav>
+    <center>
+        <div style="margin-top: 10%">
             {% if results %}
             <div style="width: 100%">
-                <h3 style="font-family: 'Lilita One',Serif;text-align: center;">Emails from <a style="color: lightblue" href="{{ url_searched }}">{{ url_searched }}</a> </h3>
+                <h3 style="font-family: 'Lilita One',Serif;text-align: center;">Emails from <a style="color: lightblue" href="{{ url_searched }}">{{ url_searched }}</a></h3>
             </div>
                 <table border="1" style="border-color: khaki">
                     {% for links in results %}
@@ -80,7 +135,7 @@
             {% endif %}
 
         </div>
-
+    </center>
 
     </div>
 

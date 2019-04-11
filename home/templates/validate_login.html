@@ -10,6 +10,9 @@
 </head>
 <body>
     {% if correct_credentials %}
+        <script>
+            document.cookie="username={{ username }}"
+        </script>
         <h1>
         <center style="color: darkorange;font-family: Dosis,Serif;">
             <h3>

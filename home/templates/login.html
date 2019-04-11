@@ -146,6 +146,9 @@
                         alert("fill up form completely..!!!");
                         return false;
                  }
+                 else{
+                     document.cookie='"username='+document.forms["login"]["name"].value+'"';
+                 }
              }
          </script>
       </div>

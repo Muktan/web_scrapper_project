@@ -12,13 +12,29 @@ from collections import deque
 import re
 # Create your views here.
 def Emails(request):
-    context = {}
+    try:
+        request.COOKIES['username']=request.GET['q']
+    except:
+        context = {"error": "Direct Access Denied"}
+        context.update(csrf(request))
+        return render_to_response('error.html', context)
+    if request.COOKIES['username']:
+        logged=True
+    else:
+        logged=False
+    context = {'username':request.GET['q'],"logged":logged}
     context.update(csrf(request))
+
     return render_to_response('Emails.html', context)
 
 def Emails_Result(request):
+    try:
+        url_searched = request.POST['url']
+    except:
+        context = {"error": "Direct Access Denied"}
+        context.update(csrf(request))
+        return render_to_response('error.html', context)
 
-    url_searched = request.POST['url']
 
     # a queue of urls to be crawled
     new_urls = deque([url_searched])
@@ -72,14 +88,18 @@ def Emails_Result(request):
     res_arr=[]
     for i in email :
         res_arr.append(i)
-
+    if request.COOKIES['username']:
+        logged=True
+    else:
+        logged=False
     wl=emails()
     wl.result = email
     wl.url_searched=url_searched
-    wl.user_id=11
+    if logged:
+        wl.username=request.COOKIES['username']
     wl.save()
 
-    context={"results": res_arr,"url_searched":url_searched}
+    context={"results": res_arr,"url_searched":url_searched,"username":request.COOKIES['username'],"logged":logged}
     context.update(csrf(request))
     return render_to_response('Emails_Result.html', context)
 

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback Form</title>
+</head>
+<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Lilita+One">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Dosis">
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+    {% load static %}
+    html{
+
+            {% load static %}
+            background-image: url("{% static 'responseapp/feedback.jpg' %}");
+          /* Full height */
+          height: 100%;
+
+          /* Center and scale the image nicely */
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+
+    }
+    body{
+        background: transparent;
+    }
+    h2{
+        font-family: "Lilita One";
+        font-size: 60px;
+    }
+    th{
+        font-family: "Dosis";
+        font-size: 20px;
+    }
+    td{
+        font-family: 'Lato';
+        font-size: 20px;
+    }
+
+</style>
+<body>
+	<center>
+
+    <h2>Feedback Form</h2>
+
+
+	<form action="" method="post">
+	    {% csrf_token %}
+	    <table>
+	    {{form.as_table}}
+		</table>
+	<input type="submit" value="Submit" onclick="thank()"/>
+    <a href="http://127.0.0.1:8000/home/index.html"><input type="button" value="Home" ></a>
+	</form>
+
+	</center>
+</body>
+</html>

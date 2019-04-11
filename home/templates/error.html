@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Lilita+One">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Dosis">
+</head>
+<body>
+    <div style="float: right;font-size: 20px">
+
+
+        <center style="margin-right: 20px">
+            <h1 style="color: darkorange;font-family: 'Lilita One',Serif;">{{ error }}</h1>
+            <h3 style="color: darkorange;font-family: 'Lilita One',Serif;margin: 10px">
+                click <a href="http://127.0.0.1:8000/home/index.html">here</a> to Home page
+            </h3>
+            <h3 style="color: darkorange;font-family: 'Lilita One',Serif;margin: 10px">
+                click <a href="http://127.0.0.1:8000/home/login.html">here</a> to Log-in
+            </h3>
+            <h3 style="color: darkorange;font-family: 'Lilita One',Serif;margin: 10px">
+                click <a href="http://127.0.0.1:8000/home/signup.html">here</a> to Sign-up
+            </h3>
+
+        </center>
+
+
+
+
+
+
+
+
+    </div>
+
+        <style>
+            html{
+
+
+                {% load static %}
+                background-image: url("{% static "home/error.jpg" %}");
+                            /* Full height */
+                  height: 100%;
+
+                  /* Center and scale the image nicely */
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  background-size: cover;
+
+
+            }
+        </style>
+
+</body>
+</html>

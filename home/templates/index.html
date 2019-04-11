@@ -66,13 +66,102 @@ small li{color:#fff;text-decoration: none;}
     top:0px;
     left: 0px;
 }
+        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400);
+body{
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight:300;
+  background-color:lightblue;
+  color:#FFF;
+}
+section{
+  text-align:center;
+}
+.footer #button{
+	width:45px;
+	height:45px;
+	border: #eeace4 12px solid;
+	border-radius:45px;
+	margin:0 auto;
+	position:relative;
+    top:25px;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+}
+.footer #button:hover{
+	width:45px;
+	height:45px;
+	border: #eeace4 12px solid;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+	position:relative;
+}
+.footer {
+	bottom:0;
+	left:0;
+	position:fixed;
+    width: 100%;
+    height: 2em;
+    overflow:hidden;
+    margin:0 auto;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+	z-index:999;
+}
+.footer:hover {
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+	height: 6em;
+}
+.footer #container{
+	margin-top:5px;
+	width:100%;
+height:100%;
+  position:relative;
+  top:0;
+  left:0;
+	background: #eeace4;
+}
+.footer #cont{
+  position:relative;
+  top:-45px;
+  right:100px;
+	width:100%;
+	height:auto;
+	margin:0 auto;
+}
+{#.footer_center{#}
+{#	width:100%;#}
+{#	float:left;#}
+{#  text-align:center;#}
+
+.footer h3{
+
+
+	font-family: 'Lato','Helvetica';
+	font-size: 20px;
+	{#font-weight: ;#}
+	margin-top:70px;
+
+}
     </style>
 </head>
 <body>
     <nav class="top navbar navbar-expand-lg justify-content-between">
 {#        <span><a href="{% static "http://127.0.0.1:8000/home/index.html" %}"><img src="{% static "home/logo.png" %}" height="50px" width="50px" style="float: left;padding-top: 12px;padding-left: 12px;"></a>#}
 
-        <a class="navbar-brand" href=""><img src="{% static "home/logo.png" %}" style="width: 50px;height: 50px;"></a>
+        <a class="navbar-brand" href="http://127.0.0.1:8000/home/index.html"><img src="{% static "home/logo.png" %}" style="width: 50px;height: 50px;"></a>
 
         <ul class="navbar-nav">
 
@@ -86,9 +175,12 @@ small li{color:#fff;text-decoration: none;}
         {% if logged == True %}
         <div>
             <input class="btn btn-outline-warning" type="button" name="login" value="{{ username }}" onclick="profile()">
+            <input type="hidden" name="username" value={{ username }}>
             <script>
                 function profile() {
-                    alert("you clicked to view profile");
+                    document.cookie="username={{ username }}"
+                    window.location.href="http://127.0.0.1:8000/home/profile.html";
+
                 }
             </script>
 
@@ -98,13 +190,13 @@ small li{color:#fff;text-decoration: none;}
             <input class="btn btn-outline-warning" type="button" name="log-in" value="log-in" onclick="login()">
             <script>
                 function login() {
-                    window.location.href="login.html";
+                    window.location.href="http://127.0.0.1:8000/home/login.html";
                 }
             </script>
             <input class="btn btn-outline-warning" type="button" name="sign-up" value="sign-up" onclick="signup()">
             <script>
                 function signup() {
-                    window.location.href="signup.html";
+                    window.location.href="http://127.0.0.1:8000/home/signup.html";
                 }
             </script>
         </div>
@@ -117,7 +209,7 @@ small li{color:#fff;text-decoration: none;}
     <section id="section1">
         <div style="text-align: left;width: 50%;float: left;">
             <h2>Web Scraper</h2>
-            <p>Web scraper will automatically load and extract data from<br> multiple pages of websites based on your requirement.</p>
+            <p>Web scraper will automatically load and extract data from<br> website based on your requirement.</p>
             <p>You choose the functionality and explicitly give url rest is our job.</p>
             <p><strong>Happy Scrappy Day...!!!</strong></p>
         </div>
@@ -144,13 +236,19 @@ small li{color:#fff;text-decoration: none;}
     </script>
     <section id="section3">
         <h2>Email gathering</h2>
-        <p>Description</p>
+        <p>Email Gathering is a email scraper designed to <scrap></scrap> emails from websites.</p>
+        <p>Simply put url to get target list of email addresses.</p>
         <input class="button" type="button" name="emailgathering" value="Try it" onclick="s3()">
 
     </section>
     <script>
         function s3() {
-            window.location.href = "http://127.0.0.1:8000/Emails/Emails.html";
+
+            {% if username != '' %}
+                window.location.href = "http://127.0.0.1:8000/Emails/Emails.html?q={{ username }}";
+            {% else %}
+                window.location.href = "http://127.0.0.1:8000/Emails/Emails.html";
+            {% endif %}
         }
     </script>
     <section id="section4">
@@ -159,9 +257,42 @@ small li{color:#fff;text-decoration: none;}
         <p>Example: If you enter "Geometry" it will fetch you all the related topics of it.</p>
         <input class="button" type="button" name="wordlink" value="Try it" onclick="abc()">
     </section>
+    <div class="footer">
+      <div id="button">
+
+      </div>
+        <div id="container">
+            <div id="cont" style="margin-left: 100px;">
+                <div class="footer_center">
+                    <h3 style="float: left;margin-top: 70px;color: #1a1a1a">Give feedback <a href="http://127.0.0.1:8000/response/">here</a>.</h3>
+                    <h3 style="float: right;margin-top: 50px;color: #1a1a1a">
+                        <table>
+                            <tr>
+                                <th>Contact Us:</th>
+                                <td>muktan@gmail.com</td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>utsav@gmail.com</td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>vishnu@gmail.com</td>
+                            </tr>
+
+                        </table>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
         function abc() {
-            window.location.href = "http://127.0.0.1:8000/WordLink/Word_Link.html";
+            {% if username != '' %}
+                window.location.href = "http://127.0.0.1:8000/WordLink/Word_Link.html?q={{ username }}";
+            {% else %}
+                window.location.href = "http://127.0.0.1:8000/WordLink/Word_Link.html";
+            {% endif %}
         }
     </script>
 {#    <section id="section5">#}

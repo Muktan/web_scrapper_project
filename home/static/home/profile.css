@@ -1,0 +1,119 @@
+body{
+	overflow:scroll;
+}
+
+.side{
+    display: table;
+}
+
+p{
+    margin: 0;
+}
+
+.p1{
+	height:300;
+	width: 300;
+        margin: 20px;
+        padding: 20px;
+        display: table-cell;
+	}
+
+.p2{
+border-radius:50%;
+height:300px;
+width:300px;}
+
+.p3{
+	color:grey;
+	text-decoration:none;
+}
+
+.p4{
+	display :block;
+	width : cover;
+  border-width: 2px;
+  opacity :0.5;
+}
+
+.p5{
+    display: table-cell;
+    position: absolute;
+    transform: translate(-10%,-110%);
+}
+
+.name{
+    font-size: 30;
+}
+
+
+.topnav {
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #000000;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: grey;
+  color: white;
+}
+
+section {
+  width: cover;
+  padding: 50px;
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+  height: 500px;
+  text-align: center;
+}
+
+section:nth-child(odd) {
+  background: #ecf0f1;
+}
+section:nth-child(even) {
+  background: #bdc3c7;
+}
+
+#m{
+	opacity:0.5;
+}
+
+section .about{
+    text-align: left;
+    font-size: 30px;
+    position: relative;;
+    top: 30%;
+}
+
+td{
+    font-size: 25px;
+    padding-left: 50px;
+}
+
+h2,h4{
+    position: relative;
+    top: 40%;
+}
+
+.playlist li{
+    text-align: left;
+}
+.playlist a{
+    color: red;
+    font-size: 20px;
+    text-decoration: none;
+    position: relative;
+}

@@ -1,0 +1,188 @@
+<html>
+	<head>
+		<title></title>
+        <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Lilita+One">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Dosis">
+        {% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static "home/profile.css"%}">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
+    <style>
+         nav{font-size:1.05em;width:100%;height:70px;background: #a1352c;text-align:center;line-height:70px;font-family:'Lato',Serif;font-weight:800;position:fixed;top:0;z-index:10;}
+        nav.opaque{background-color:#444;}
+        nav>ul{margin:0;padding:0;list-style:none;}
+        nav>ul>li{display:inline;}
+        nav a{color:#f1f1f1;text-decoration:none;padding:5px 10px;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;-webkit-transition:all .3s ease;-o-transition:all .3s ease;transition:all .3s ease;}
+        {#nav li:hover{border-bottom:3px solid rgba(255,255,255,0.8);}#}
+        nav>ul>li:nth-child(1n+2):before{content:'|';width:1px;margin:0 10px;opacity:0.25;}
+
+        body{
+            {#background: #4d4d4d;#}
+        }
+    </style>
+	</head>
+	<body>
+    <nav class="row top navbar navbar-expand-lg justify-content-between" style="margin: 0px;margin-bottom: 10px">
+{#        <span><a href="{% static "http://127.0.0.1:8000/home/index.html" %}"><img src="{% static "home/logo.png" %}" height="50px" width="50px" style="float: left;padding-top: 12px;padding-left: 12px;"></a>#}
+
+        <a class="navbar-brand" href="http://127.0.0.1:8000/home/index.html"><img src="{% static "home/logo.png" %}" style="width: 50px;height: 50px;"></a>
+
+        <ul class="navbar-nav">
+
+            <li><a href="http://127.0.0.1:8000/home/index.html#section1" class="smoothscroll">About Us</a></li>
+            <li><a href="http://127.0.0.1:8000/home/index.html#section2" class="smoothscroll">Basic Scrapping</a></li>
+            <li><a href="http://127.0.0.1:8000/home/index.html#section3" class="smoothscroll">Email Gathering</a></li>
+            <li><a href="http://127.0.0.1:8000/home/index.html#section4" class="smoothscroll">Word Link</a></li>
+{#            <li><a href="#section5" class="smoothscroll">Section 5</a></li>#}
+{#            <li><a href="#section6" class="smoothscroll">Section 6</a></li>#}
+        </ul>
+        {% if logged%}
+        <div>
+            <input class="btn btn-outline-warning" type="button" name="login" value="{{ username }}" onclick="profile()">
+            <input type="hidden" name="username" value={{ username }}>
+            <script>
+                function profile() {
+                    document.cookie="username={{ username }}"
+                    window.location.href="http://127.0.0.1:8000/home/profile.html";
+
+                }
+            </script>
+
+        </div>
+        {% endif %}
+
+
+
+    </nav>
+
+         <table style="width: 100%">
+             <tr>
+                <td width="20%">
+                    {% load static %}
+		            <img class="p2" src="Profile_Pics\u2.jpg" onerror=this.src="{% static "home/no.png"%}">
+                </td>
+                <td width="80%">
+                    <table>
+                        <tr>
+                            <th style="text-align: left;font-size: 25px">
+                                Name:
+                            </th>
+                            <td style="text-align: left;font-size: 25px">
+                                {{ username }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left;font-size: 25px">
+                                Email-Id:
+                            </th>
+                            <td style="text-align: left;font-size: 25px">
+                                {{ email }}
+                            </td>
+                        </tr>
+
+                    </table>
+                    <br>
+                    <br>
+                    <button type="button" class="btn btn-outline-danger" onclick="clearall()">Sign-Out</button>
+                </td>
+             </tr>
+         </table>
+    <br><br>
+    <script>
+        function clearall(){
+            var cookies = document.cookie.split(";");
+
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i];
+                var eqPos = cookie.indexOf("=");
+                var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            }
+            window.location.href="http://127.0.0.1:8000/home/signout.html";
+
+        }
+    </script>
+
+{#                </div><div class="p5"><p class="name">a</p><p class="no">&nbsp&nbsp&nbsp+918954789865<br><br><br><br><br><br><br><br><br></p><a class="p3" href="photoUpload.php">EDIT</a></div></div>	<hr class="p4"/>#}
+	<div class="btn-group-lg" role="group" aria-label="Basic example">
+      <button id="em" type="button" class="btn btn-secondary "  onclick="contentgen(this.id)" >Email Gathering History</button>
+      <button id="wo" type="button" class="btn btn-secondary" onclick="contentgen(this.id)">Word Link History</button>
+      <button type="button" class="btn btn-secondary">Basic Scrapping History</button>
+    </div>
+	<hr class="p4"/>
+    <script>
+        function contentgen(id){
+            if(id==="em"){
+                document.getElementById("content").innerHTML="<h2>Email Gathering History</h2>\n" +
+                    "<section id=\"1\" style=\"overflow: scroll\">\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "            {% for i,j,k in final_result1 %}\n"+
+                    "                <table width=\"100%\" border=\"2\">\n"+
+                    "                <tr><th><b>url:</b></th><td>{{ j }}</td></tr>\n"+
+                    "                <tr><th><b>time:</b></th><td>{{ k }}</td></tr>\n"+
+                    "                <tr><th><b>result:</b></th><td>{{ i }}</td></tr>\n"+
+                    "\n"+
+                    "                </table><br><br>\n"+
+                    "            {% endfor %}\n" +
+                "\n" +
+                "        </section>";
+            }
+            else if(id==="wo"){
+                document.getElementById("content").innerHTML="<h2>Word Link History</h2>\n" +
+                    "<section id=\"1\" style=\"overflow: scroll\">\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "            {% for i,j,k in final_result2 %}\n"+
+                    "                <table width=\"100%\" border=\"2\">\n"+
+                    "                <tr><th><b>Word Searched:</b></th><td>{{ j }}</td></tr>\n"+
+                    "                <tr><th><b>Time</b></th><td>{{ k }}</td></tr>\n"+
+                    "                <tr><th><b>Result:</b></th><td>{{ i }}</td></tr>\n"+
+                    "\n"+
+                    "                </table><br><br>\n"+
+                    "            {% endfor %}\n" +
+                "\n" +
+                "        </section>";
+            }
+            else{
+                document.getElementById("content").innerHTML="<h2>Email Gathering History</h2>" +
+                    "<section id=\"1\" style=\"overflow: scroll\">\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "            {% for i,j,k in final_result1 %}\n"+
+                    "                <table width=\"100%\" border=\"2\">\n"+
+                    "                <tr><th><b>url:</b></th><td>{{ j }}</td></tr>\n"+
+                    "                <tr><th><b>time:</b></th><td>{{ k }}</td></tr>\n"+
+                    "                <tr><th><b>result:</b></th><td>{{ i }}</td></tr>\n"+
+                    "\n"+
+                    "                </table><br><br>\n"+
+                    "            {% endfor %}\n" +
+                "\n" +
+                "        </section>";
+            }
+
+        }
+    </script>
+    <div id="content">
+
+
+    </div>
+
+
+        </body>
+</html>
