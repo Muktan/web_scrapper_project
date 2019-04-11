@@ -23,5 +23,6 @@ urlpatterns = [
     path('WordLink/', include('WordLink.urls')),
     path('Emails/', include('Emails.urls')),
     path('', include('responseapp.urls')),
+    path('news_scrapping/',include('news_scrapping.urls')),
 
 ]

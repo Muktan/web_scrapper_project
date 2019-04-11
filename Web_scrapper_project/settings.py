@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'WordLink',
     'Emails',
     'responseapp',
+    'news_scrapping',
 
 ]
 
